@@ -18,5 +18,12 @@
   <%= @restaurant.phone_number %>
 </p>
 
+<p>
+  <strong>Photo</strong>
+  <%= @restaurant.photo %>
+</p>
+
 <%= link_to 'Back', restaurants_path %>
+<% if @restaurant.owner == current_owner %>
 | <%= link_to 'Edit', edit_restaurant_path(@restaurant) %>
+<% end %>

@@ -1,11 +1,13 @@
 <h1>Restaurant List</h1>
-
+<h3>Current Owner ID: <%= current_owner.id %></h3>
 <table>
   <tr>
   	<th>Name</th>
   	<th>Description</th>
   	<th>Address</th>
   	<th>Phone Number</th>
+    <th>Photo</th>
+    <th>Owner ID</th>
     <th></th>
     <th></th>
   </tr>
@@ -16,12 +18,15 @@
     <td><%= restaurant.description %></td>
     <td><%= restaurant.address %></td>
     <td><%= restaurant.phone_number %></td>
-    <td><%= link_to 'Show', restaurant %></td>
-    <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+    <td><%= restaurant.owner_id %></td>
+    <td><%= link_to "Show Restaurant", restaurant_path(restaurant), :class =>'btn btn-primary' %></td>
+    <% if current_owner.id == restaurant.owner_id %>
+      <td><%= link_to 'Edit', edit_restaurant_path(restaurant), :class =>'btn btn-default' %></td>
     <td><%= link_to 'Destroy', restaurant_path(restaurant), 
     method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
-<%= link_to "New Restaurant", new_restaurant_path, :class=>"btn btn-primary" %>
+<%= link_to "New Restaurant", new_restaurant_path, :class =>'btn btn-success' %>

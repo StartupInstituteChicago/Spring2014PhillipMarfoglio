@@ -23,6 +23,10 @@ gem 'carrierwave'
 
 gem 'bootstrap-sass'
 
+gem 'rmagick'
+
+gem 'devise'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
