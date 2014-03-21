@@ -2,11 +2,19 @@ Reservester::Application.routes.draw do
   devise_for :owners
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  get "owners/dashboard"
+  resources :reservations
 
-  resources :restaurants
+  authenticated :owner do
+    root :to => "owners#dashboard", :as => "authenticated_root"
+  end
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+
+  resources :restaurants do
+    resources :reservations
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

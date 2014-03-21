@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140318205245) do
+ActiveRecord::Schema.define(version: 20140319020036) do
 
   create_table "owners", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "name"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -31,14 +32,23 @@ ActiveRecord::Schema.define(version: 20140318205245) do
   add_index "owners", ["email"], name: "index_owners_on_email", unique: true, using: :btree
   add_index "owners", ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true, using: :btree
 
+  create_table "reservations", force: true do |t|
+    t.string   "email"
+    t.datetime "requested_date_time"
+    t.text     "message"
+    t.integer  "restaurant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "restaurants", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.text     "address"
     t.text     "phone_number"
+    t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "photo"
     t.string   "owner_id"
   end
 

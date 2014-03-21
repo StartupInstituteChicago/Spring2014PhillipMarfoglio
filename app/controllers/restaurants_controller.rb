@@ -7,6 +7,8 @@ class RestaurantsController < ApplicationController
 
   def show
   	@restaurant = Restaurant.find(params[:id])
+  
+    @can_edit = @restaurant.owner == current_owner
   end
 
   def new

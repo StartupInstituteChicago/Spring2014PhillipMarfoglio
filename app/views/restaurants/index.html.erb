@@ -1,6 +1,10 @@
+<div>
 <h1>Restaurant List</h1>
 <h3>Current Owner ID: <%= current_owner.id %></h3>
-<table>
+<input class="navbar-search" class="pull-right" type="search" placeholder="Find a restaurant"/ ><hr/>
+</div>
+
+<table class='table table-striped'>
   <tr>
   	<th>Name</th>
   	<th>Description</th>
@@ -18,6 +22,7 @@
     <td><%= restaurant.description %></td>
     <td><%= restaurant.address %></td>
     <td><%= restaurant.phone_number %></td>
+    <td><%= image_tag restaurant.photo, :size => "300x250" %></td>
     <td><%= restaurant.owner_id %></td>
     <td><%= link_to "Show Restaurant", restaurant_path(restaurant), :class =>'btn btn-primary' %></td>
     <% if current_owner.id == restaurant.owner_id %>

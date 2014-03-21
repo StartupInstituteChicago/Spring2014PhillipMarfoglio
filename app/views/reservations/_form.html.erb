@@ -1,0 +1,24 @@
+<form class="form-horizontal"><%= form_for @reservation, url: restaurant_reservations_path do |f| %>
+
+<div class="reservation-form">
+  <p>
+  	<%= f.label :email %>
+  	<%= f.text_field :email %>
+  </p>
+
+  <p>
+  	<%= f.label :requested_date_time %>
+  	<%= f.date_select :requested_date_time, {:order => [:month, :day, :year], :prompt => true, :start_year => Time.now.year, :end_year => Time.now.year + 1} %>
+  </p>
+
+  <p>
+  	<%= f.label :message %>
+  	<%= f.text_area :message %>
+  </p>
+
+  <p>
+  	<%= f.submit "Save Reservation" %>
+  </p>
+</div>
+</form>
+<% end %>

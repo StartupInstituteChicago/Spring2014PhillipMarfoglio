@@ -20,10 +20,17 @@
 
 <p>
   <strong>Photo</strong>
-  <%= @restaurant.photo %>
+  <%= image_tag @restaurant.photo, :size => "300x250" %>
 </p>
 
 <%= link_to 'Back', restaurants_path %>
 <% if @restaurant.owner == current_owner %>
-| <%= link_to 'Edit', edit_restaurant_path(@restaurant) %>
+  | <%= link_to 'Edit', edit_restaurant_path(@restaurant) %>
+
+  | <%= link_to "Reservations", restaurant_reservations_path(@restaurant) %>
+
+<% else %>
+
+  | <%= link_to "Make a reservation", new_restaurant_reservation_path(@restaurant) %>
+
 <% end %>

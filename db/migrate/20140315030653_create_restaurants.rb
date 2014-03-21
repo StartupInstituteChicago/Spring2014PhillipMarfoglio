@@ -5,6 +5,7 @@ class CreateRestaurants < ActiveRecord::Migration
       t.text :description
       t.text :address
       t.text :phone_number
+      t.string :photo
 
       t.timestamps
     end
